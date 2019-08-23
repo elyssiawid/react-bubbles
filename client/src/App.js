@@ -1,24 +1,9 @@
-import React from "react";
-import Login from "./components/Login.js";
-import BubblePage from "./components/BubblePage";
-import { Route, Link, Redirect } from "react-router-dom";
-import Bubbles from "./components/Bubbles";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
-  // const propsWithoutComponent = {...props, component: undefined};
-  return (
-    <Route
-      {...rest}
-      render={props => {
-        if (localStorage.getItem("token")) {
-          return <Component {...props} />;
-        } else {
-          return <Redirect to="/login" />;
-        }
-      }}
-    />
-  );
-};
+import Login from "./components/Login";
+import "./styles.scss";
+import BubblePage from "./components/BubblePage";
 
 const protectRoute = Component => props => {
   if (localStorage.getItem("token")) {
@@ -28,15 +13,21 @@ const protectRoute = Component => props => {
   }
 };
 
-const ProtectedBubb = protectRoute(BubblePage);
+const ProtectedBubblePage = protectRoute(BubblePage);
 
 function App() {
+  const [colorList, setColorList] = useState([]);
   return (
-    <div className="App">
-      <Route path="/login" component={Login} />
-      <ProtectedRoute path="/BubblePage" component={BubblePage} />
-      {/* <Route path="/BubblePage" component={ProtectedBubblePage}/> */}
-    </div>
+    <Router>
+      <div className="App">
+        <Route exact path="/" component={Login} />
+        <ProtectedRoute path="/BubblePage" component={ProtectedBubblePage} />
+        {/* 
+          Build a PrivateRoute component that will 
+          display BubblePage when you're authenticated 
+        */}
+      </div>
+    </Router>
   );
 }
 

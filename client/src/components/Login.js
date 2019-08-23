@@ -5,6 +5,18 @@ import axios from "axios";
 // when you have handled the token, navigate to the BubblePage route
 
 const Login = ({ history }) => {
+  axios
+    .post("http://localhost:5000/api/login", {
+      username: "Lambda School",
+      password: "i<3Lambd4"
+    })
+    .then(function(response) {
+      localStorage.setItem("token", response.data.payload);
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   const [creds, setCreds] = useState({ username: "", password: "" });
 
   const handleChange = event => {
