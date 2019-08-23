@@ -29,10 +29,20 @@ In this project you will create a login page and request a token from the server
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain what a token is used for.
+
+Modern web services dealing in JSON data often use JWTs instead. These tokens issued by the server are strings of cryptic text which can be stored in the client using local storage or session storage.
+
 - [ ] What steps can you take in your web apps to keep your data secure?
+
+We can do this through client-side authentication. The server will check those credentials against what is in the database, and if it can authenticate the user, it will return a token. Once we have this token, we can add two layers of protection to our app. One with protected routes, the other by sending an authentication header with our API calls (as we learned in the above objective).
+
 - [ ] Describe how web servers work.
+
+The physical computer device that we call a web server (much like the one shown below) is connected to the internet, and stores the code for different websites to be shared across the world at all times. When we load the code for our websites, or web apps, on a server like this, we would say that the server is “hosting” our website/app.
+
 - [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
 
+When data needs to be UPDATED somewhere we use a PUT HTTP resource method to do so. PUT is the “U” in CRUD and it stands for UPDATE We use the PUT method to change a resource’s information. The DELETE HTTP request method is also the “D” in CRUD. We use this to Delete or destroy data that lives elsewhere.
 
 ## Project Set Up
 
@@ -53,9 +63,9 @@ Follow these steps to set up and work on your project:
 
 Follow these steps for completing your project:
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
+- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo).
 - [ ] Add your Project Manager as a Reviewer on the Pull-request
-- [ ] PM then will count the HW as done by  merging the branch back into master.
+- [ ] PM then will count the HW as done by merging the branch back into master.
 
 ## Minimum Viable Product
 
@@ -78,11 +88,11 @@ Build a login form to authenticate your users.
 
 ### API Documentation
 
-  * **[POST]** * to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambd4' }`
-  * **[GET]** to `/api/colors`: returns the list of colors and their hex codes.
-  * **[POST]** to `/api/colors`: creates a new color object. Pass the color as the `body` of the request (the second argument passed to `axios.post`).
-  * **[PUT]** to `/api/colors/:id`: updates the color using the `id` passed as part of the URL. Send the color object with the updated information as the `body` of the request (the second argument passed to `axios.put`).
-  * **[DELETE]** to `/api/colors/123`: removes the color using the `id` passed as part of the URL (123 in example).
+- **[POST]** \* to `/api/login`: returns a token to be added to the header of all other requests. Pass in the following credentials as the `body` of the request: `{ username: 'Lambda School', password: 'i<3Lambd4' }`
+- **[GET]** to `/api/colors`: returns the list of colors and their hex codes.
+- **[POST]** to `/api/colors`: creates a new color object. Pass the color as the `body` of the request (the second argument passed to `axios.post`).
+- **[PUT]** to `/api/colors/:id`: updates the color using the `id` passed as part of the URL. Send the color object with the updated information as the `body` of the request (the second argument passed to `axios.put`).
+- **[DELETE]** to `/api/colors/123`: removes the color using the `id` passed as part of the URL (123 in example).
 
 ## STRETCH PROBLEMS
 
