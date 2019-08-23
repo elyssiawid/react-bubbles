@@ -12,7 +12,6 @@ const Login = ({ history }) => {
     })
     .then(function(response) {
       localStorage.setItem("token", response.data.payload);
-      console.log(response);
     })
     .catch(function(error) {
       console.log(error);
