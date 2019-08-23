@@ -19,7 +19,12 @@ const ColorList = ({ colors, updateColors }) => {
   const saveEdit = e => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5000/api/colors/${e.target.value}`)
+      .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, {
+        code: {
+          hex: colorToEdit.code.hex
+        },
+        color: colorToEdit.code.color
+      })
       .then(response => {})
       .catch(err => {});
   };
